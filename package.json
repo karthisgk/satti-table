@@ -45,5 +45,21 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
+  },
+  "homepage": "https://github.com/karthisgk/satti-table#readme",
+  "keywords": [
+    "angular",
+    "ngx",
+    "satti-table",
+    "data-table",
+    "satti",
+    "sattingo"
+  ],
+  "bugs": {
+    "url": "https://github.com/karthisgk/satti-table/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthisgk/satti-table.git"
   }
 }

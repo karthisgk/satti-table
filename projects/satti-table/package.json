@@ -1,11 +1,27 @@
 {
   "name": "satti-table",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "peerDependencies": {
     "@angular/common": "^9.1.11",
     "@angular/core": "^9.1.11"
   },
   "dependencies": {
     "tslib": "^1.10.0"
+  },
+  "homepage": "https://github.com/karthisgk/satti-table#readme",
+  "keywords": [
+    "angular",
+    "ngx",
+    "satti-table",
+    "data-table",
+    "satti",
+    "sattingo"
+  ],
+  "bugs": {
+    "url": "https://github.com/karthisgk/satti-table/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karthisgk/satti-table.git"
   }
 }
