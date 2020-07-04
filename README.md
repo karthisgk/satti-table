@@ -1,1 +1,0 @@
-# satti-table
