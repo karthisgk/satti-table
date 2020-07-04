@@ -1,0 +1,77 @@
+<div class="card card-body" *ngIf="mdtOption != null && mdtOption.columns && mdtOption.columns.length else errorMessage">
+    <div class="row mdt-row1">
+        <div class="col-sm-12 col-md-6">
+            <div class="mdt-show-entry">
+                <label *ngIf="mdtOption.showEntry != null">
+                    Show 
+                    <select class="form-control form-control-sm" (change)="onChangeShowEntry()" [(ngModel)]="mdtOption.showEntry">
+                        <option value="10">10</option>
+                        <option value="25">25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                </label>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="mdt-search">
+                <label *ngIf="mdtOption.searchText != null">
+                    Search: <input type="text" class="form-control form-control-sm" (keyup)="onKeyUpSearchText()" [(ngModel)]="mdtOption.searchText" />
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mdt-row2">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table id="dtt" class="table table-bordered">
+                    <thead *ngIf="mdtOption.columns && mdtOption.columns.length">
+                        <tr>
+                            <th *ngFor="let c of mdtOption.columns" class="{{(c.sort ? 'sort ' : '') + (c.sort && mdtOption.sort && mdtOption.sort.columnId == c._id ? (mdtOption.sort.value == 1 ? 'asc' : 'desc') : '')}}" (click)="onSort(c)" [attr.data-col]="c._id">{{c.label}}</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngIf="mdtOption.data && mdtOption.data.length">
+                        <tr *ngFor="let d of mdtOption.data" id="row-{{mdtOption.idKey ? d[mdtOption.idKey] : d._id}}">
+                            <td *ngFor="let c of columns" class="{{c.action != null ? 'mdt-actions' : ''}}">
+                                <span *ngIf="c.action == null">{{d[c._id]}}</span>
+                                <span *ngIf="c.action && c.action.length">
+                                    <a *ngFor="let a of c.action" (click)="actionPerform((a.type ? a.type : ''), (a.returnKey && d[a.returnKey] ? d[a.returnKey] : d))" class="mdt-action-btn {{a.className ? a.className : ''}}" href="javascript: void(0);">
+                                        <span *ngIf="a.iconClassName else actionText" class="{{a.iconClassName}}"></span>
+                                        <ng-template #actionText>
+                                            <span *ngIf="a.btnText">{{a.btnText}}</span>
+                                        </ng-template>
+                                    </a>
+                                </span>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody *ngIf="mdtOption.data && mdtOption.data.length == 0">
+                        <tr>
+                            <td [attr.colspan]="mdtOption.columns.length">No Data Found</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mdt-row3">
+        <div class="col-sm-12 col-md-7">
+            <div>
+                <ul class="mdt-pagination" *ngIf="pagination && pagination.length">
+                    <li *ngFor="let p of pagination" (click)="paginate(p)" class="mdt-page-btn{{(p.action == 'prev' ? ' previous' : '') + (p.action == 'next' ? ' next' : '' + (p.active ? ' active' : ''))}}">
+                        <a href="javascript: void(0);" class="mdt-page-link">{{p.action ? p.action : '...'}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-5" *ngIf="mdtOption.start != null && mdtOption.length != null && mdtOption.total != null">
+            <div class="mdt-entry-info">Showing {{(mdtOption.length ? (mdtOption.start + 1) : mdtOption.start)}} to {{(mdtOption.start + mdtOption.length)}} of {{mdtOption.total}} entries</div>
+        </div>
+    </div>
+</div>
+
+<ng-template #errorMessage>
+    <h3 class="text-center">set the required config</h3>
+</ng-template>

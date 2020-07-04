@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-12">
+    <satti-table [option]="sattiTableOption" (httpCall)="httpCall($event)"></satti-table>
+  </div>
+  <div class="col-sm-12">
+    <h4>Options:</h4>
+    <pre *ngIf="availableOption">{{availableOption}}</pre>
+  </div>
+
+  <div class="col-sm-12">
+    <h4>Methods:</h4>
+    <ul>
+      <li>reload(): void</li>
+    </ul>
+  </div>
+</div>

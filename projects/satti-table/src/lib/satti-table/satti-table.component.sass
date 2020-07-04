@@ -1,0 +1,73 @@
+.mdt-row1
+    margin-top: 20px
+
+.mdt-row1 .mdt-show-entry > label
+    text-align: left,
+    white-space: nowrap
+
+.mdt-row1 .mdt-search, .mdt-row3 .mdt-entry-info
+    text-align: right
+
+.mdt-row1 .mdt-show-entry .form-control, .mdt-row1 .mdt-search .form-control
+    display: inline-block
+    width: auto
+
+.mdt-row3 .mdt-pagination
+    display: -webkit-box,
+    display: -ms-flexbox,
+    display: flex,
+    padding-left: 0,
+    list-style: none,
+    border-radius: 0.25rem
+
+.mdt-row3 .mdt-page-link
+    position: relative,
+    display: block,
+    padding: 0.5rem 0.75rem,
+    margin-left: -1px,
+    line-height: 1.25,
+    color: #313a46,
+    background-color: #fff,
+    border: 1px solid #dee2e6,
+
+.mdt-row3 .mdt-page-btn.active .mdt-page-link
+    z-index: 3,
+    color: #fff,
+    background-color: #727cf5,
+    border-color: #727cf5
+
+.mdt-row2 table thead th
+    position: relative
+
+.mdt-row2 table thead th.sort:before
+    right: .5rem,
+    content: "\F360",
+    font-family: "Material Design Icons",
+    font-size: 1rem,
+    top: 12px,
+
+.mdt-row2 table thead th.sort:after
+    right: .5em,
+    content: "\F35D",
+    font-family: "Material Design Icons",
+    top: 18px,
+    font-size: 1rem,
+
+.mdt-row2 table thead th.sort:before, .mdt-row2 table thead th.sort:after
+    position: absolute,
+    bottom: 0.9em,
+    display: block,
+    opacity: 0.3,
+
+.mdt-row2 table thead th.sort.asc:before, .mdt-row2 table thead th.sort.desc:after
+    opacity: 1
+
+.mdt-row2 table.table-center thead th,.mdt-row2 table.table-center tbody td
+    text-align: center
+
+.mdt-row2 .mdt-action-btn:not(:first-child)
+    margin-left: 2px
+
+@media (max-width: 767.98px)
+    .mdt-row3 li.mdt-page-btn:not(.previous):not(.next)
+        display: none

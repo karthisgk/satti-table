@@ -2,5 +2,168 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "satti-table": {
+      "projectType": "library",
+      "root": "projects/satti-table",
+      "sourceRoot": "projects/satti-table/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/satti-table/tsconfig.lib.json",
+            "project": "projects/satti-table/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/satti-table/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/satti-table/src/test.ts",
+            "tsConfig": "projects/satti-table/tsconfig.spec.json",
+            "karmaConfig": "projects/satti-table/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/satti-table/tsconfig.lib.json",
+              "projects/satti-table/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "satti-table-example": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/satti-table-example",
+      "sourceRoot": "projects/satti-table-example/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/satti-table-example",
+            "index": "projects/satti-table-example/src/index.html",
+            "main": "projects/satti-table-example/src/main.ts",
+            "polyfills": "projects/satti-table-example/src/polyfills.ts",
+            "tsConfig": "projects/satti-table-example/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/satti-table-example/src/favicon.ico",
+              "projects/satti-table-example/src/assets"
+            ],
+            "styles": [
+              "projects/satti-table-example/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/satti-table-example/src/environments/environment.ts",
+                  "with": "projects/satti-table-example/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "satti-table-example:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "satti-table-example:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "satti-table-example:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/satti-table-example/src/test.ts",
+            "polyfills": "projects/satti-table-example/src/polyfills.ts",
+            "tsConfig": "projects/satti-table-example/tsconfig.spec.json",
+            "karmaConfig": "projects/satti-table-example/karma.conf.js",
+            "assets": [
+              "projects/satti-table-example/src/favicon.ico",
+              "projects/satti-table-example/src/assets"
+            ],
+            "styles": [
+              "projects/satti-table-example/src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/satti-table-example/tsconfig.app.json",
+              "projects/satti-table-example/tsconfig.spec.json",
+              "projects/satti-table-example/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/satti-table-example/e2e/protractor.conf.js",
+            "devServerTarget": "satti-table-example:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "satti-table-example:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "cli": {
+    "analytics": false
+  },
+  "defaultProject": "satti-table"
 }
