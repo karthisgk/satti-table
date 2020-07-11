@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-sm-12">
-    <satti-table [option]="sattiTableOption" (httpCall)="httpCall($event)"></satti-table>
+    <satti-table [option]="sattiTableOption" (httpCall)="httpCall($event)" (actionCallBack)="actionCallBack($event)"></satti-table>
   </div>
   <div class="col-sm-12">
     <h4>Options:</h4>

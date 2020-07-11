@@ -36,7 +36,7 @@
                             <td *ngFor="let c of columns" class="{{c.action != null ? 'mdt-actions' : ''}}">
                                 <span *ngIf="c.action == null">{{d[c._id]}}</span>
                                 <span *ngIf="c.action && c.action.length">
-                                    <a *ngFor="let a of c.action" (click)="actionPerform((a.type ? a.type : ''), (a.returnKey && d[a.returnKey] ? d[a.returnKey] : d))" class="mdt-action-btn {{a.className ? a.className : ''}}" href="javascript: void(0);">
+                                    <a *ngFor="let a of c.action" (click)="actionPerform((a.type ? a.type : ''), (a.returnKey && d[a.returnKey] ? d[a.returnKey] : d))" class="mdt-action-btn {{a.className ? a.className : ''}} {{d['hideAction'] && checkDisable(d['hideAction'], a.type) ? 'hide' : ''}}" href="javascript: void(0);">
                                         <span *ngIf="a.iconClassName else actionText" class="{{a.iconClassName}}"></span>
                                         <ng-template #actionText>
                                             <span *ngIf="a.btnText">{{a.btnText}}</span>

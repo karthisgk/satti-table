@@ -197,4 +197,8 @@ export class SattiTableComponent implements OnInit {
     }
   }
 
+  checkDisable(options: string, type):boolean {
+    return options.split(',').indexOf(type) > -1;
+  }
+
 }
