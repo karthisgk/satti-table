@@ -81,7 +81,7 @@ export class YourAppComponent {
 }
 ```
 
-### Node
+### Note
 ** To Hide Action Button **
 ```typescript
 data: [
