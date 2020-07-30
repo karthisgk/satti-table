@@ -47,7 +47,7 @@ After that, you can use the `satti-table` components in your templates, passing 
 
 ```html
 <div>
-  <satti-table [option]="option" (httpCall)="getDataFromApi($event)"></satti-table>
+  <satti-table [option]="option" (httpCall)="getDataFromApi($event)" (actionCallBack)="actionCallBack($event)"></satti-table>
 </div>
 ```
 
@@ -70,13 +70,29 @@ export class YourAppComponent {
         }
     }
     this.httpClient.post('http://api.sample.com/', data).subscribe((resp: any) => {
-        this.option.data = resp.data;
+        this.option.data = resp.data.map(d => {
+            d.hideAction = 'view-btn, edit-btn';
+            return d;
+        });
         this.option.total = 4;
         callBack();
     }, err => alert(err.statusText ? err.statusText :  err.message))
   }
 }
 ```
+
+### Node
+** To Hide Action Button **
+```typescript
+data: [
+    {
+        ...,
+        ...,
+        hideAction: 'edit,delete'
+    }
+]
+```
+
 
 
 ## Options
