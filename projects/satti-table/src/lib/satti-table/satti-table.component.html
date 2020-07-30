@@ -39,7 +39,7 @@
                                     <a *ngFor="let a of c.action" (click)="actionPerform((a.type ? a.type : ''), (a.returnKey && d[a.returnKey] ? d[a.returnKey] : d))" class="mdt-action-btn {{a.className ? a.className : ''}} {{d['hideAction'] && checkDisable(d['hideAction'], a.type) ? 'hide' : ''}}" href="javascript: void(0);">
                                         <span *ngIf="a.iconClassName else actionText" class="{{a.iconClassName}}"></span>
                                         <ng-template #actionText>
-                                            <span *ngIf="a.btnText">{{a.btnText}}</span>
+                                            <span>{{a.btnText ? a.btnText : d[c._id]}}</span>
                                         </ng-template>
                                     </a>
                                 </span>

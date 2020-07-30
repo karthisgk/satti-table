@@ -8,11 +8,17 @@ import { Component } from '@angular/core';
 export class AppComponent {
   sattiTableOption: any = {
     columns: [
-      {_id: 'name', label: 'Name'},
+      {_id: 'name', label: 'Name',action: [
+        {
+          type: 'view',
+          className: 'btn btn-primary',
+          btnText: false
+        }
+      ]},
       {_id: 'position', label: 'Position'},
       {_id: 'office', label: 'Office'},
       {_id: 'age', label: 'age'},
-      {_id: 'option', label: 'Name', action: [
+      {_id: 'option', label: 'Action', action: [
         {
           type: 'view',
           className: 'btn btn-warning',
